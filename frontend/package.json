@@ -36,7 +36,8 @@
     "worker-loader": "^3.0.8"
   },
   "devDependencies": {
-    "@types/node": "^14.14.43",
-    "json-loader": "^0.5.7"
+    "@types/node": "^14.17.27",
+    "json-loader": "^0.5.7",
+    "webpack": "^5.63.0"
   }
 }

@@ -191,12 +191,14 @@ function Neighborhoods (props) {
         // Boston-wide is a special case because it is not a neighborhood name
         // the organizations in Boston-wide does not belong to a single neighborhood
         if (name === "Boston-wide") {
+            // Push all city, which include "Boston-wide" as their neighborhood, into neighborhoods array
             const orgs = props.orgData.filter(i => {
                 return i.neighborhood.includes(name);
             });
             const bostonWide = {
                 Name: name,
                 orgs: orgs,
+                
             }
             neighborhoods.push(bostonWide);
         } else {
@@ -234,7 +236,7 @@ function Neighborhoods (props) {
 function Neighborhood(props) {
     // create component state(open) and state update method(setOpen)
     const [open, setOpen] = React.useState(true);
-
+    console.log(props)
     // wrap the setOpen function with handleClick function
     const handleClick = () => {
       setOpen(!open);
@@ -242,7 +244,7 @@ function Neighborhood(props) {
 
     return (
       <div>
-        <ListItem button onClick={handleClick} id={`neighborhood-${props.neighborhood.Name === "Boston-wide" ? 0 : props.neighborhood.Neighborhood_ID }`}>
+        <ListItem button onMouseOver={handleClick} id={`neighborhood-${props.neighborhood.Name === "Boston-wide" ? 0 : props.neighborhood.Neighborhood_ID }`}>
           <ListItemText><h5>{props.neighborhood.Name}</h5></ListItemText>
           {open ? <ExpandMore /> : <ExpandLess />}
         </ListItem>
@@ -276,7 +278,7 @@ function Neighborhood(props) {
           </CardContent>
   
           <CardContent className="organization-links">
-            {org.tags[0] == "food" ? <p>Food</p> : false}
+            {org.tags[0] === "food" ? <p>Food</p> : false}
             {org.website !== "" ? (<a href={org.website}>Website</a>)  : false}
             {org.give_help !== "" ? (<a href={org.give_help}>Give Help</a>)  : false}
             {org.need_help !== "" ? (<a href={org.need_help}>Get Help</a>)  : false}
