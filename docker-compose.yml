@@ -12,8 +12,8 @@ services:
       - '5000:5000'
     depends_on: 
       - postgres
-    # env_file:
-    #   - ./backend/.env
+    env_file:
+      - ./backend/.env
     # [named vol­umes](https://docs.docker.com/compose/compose-file/#volumes) that are mount­ed and can be shared amongst your Dock­er con­tain­ers (but not your host com­put­er), for stor­ing per­sis­tent data
     # volumes:
     #   - .:/code
