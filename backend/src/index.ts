@@ -1,9 +1,11 @@
+import axios from "axios";
+
 const { PrismaClient } = require("@prisma/client");
 const express = require( "express" );
 const app = express();
 const port = 5000; // default port to listen
 const prisma = new PrismaClient();
-var cors = require('cors')
+const cors = require('cors')
 
 
 app.use(cors())
@@ -66,4 +68,12 @@ app.post('/location/add', async (req:any, res:any) => {
     } catch (e) {
         res.json(e)
     }
+})
+
+app.post('/form/validate', async (req: any, res: any) => {
+    const secretKey = process.env.SECRET_KEY;
+    const response = await axios.post(`https://www.google.com/recaptcha/api/siteverify?secret=${secretKey}&response=${req.body.token}`);
+    // the reCaptcha API will return a boolean value telling us if the form submitter has passed the reCaptcha challenge
+    let success = response.data.success;
+    res.send({isHuman: success});
 })
