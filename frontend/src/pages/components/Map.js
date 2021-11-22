@@ -198,6 +198,7 @@ function Neighborhoods (props) {
         // Boston-wide is a special case because it is not a neighborhood name
         // the organizations in Boston-wide does not belong to a single neighborhood
         if (name === "Boston-wide") {
+            // Push all city, which include "Boston-wide" as their neighborhood, into neighborhoods array
             const orgs = props.orgData.filter(i => {
                 return i.neighborhood.includes(name);
             });
