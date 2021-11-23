@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import centroid from '@turf/centroid';
-import mapboxgl from 'mapbox-gl';
+import mapboxgl from '!mapbox-gl';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import List from '@material-ui/core/List';
@@ -17,9 +17,10 @@ import neighborhoodSource from '../../data/neighborhoods';
 import '../index.css';
 import Form from './Form';
 import logo from '../../images/julia1.jpg';
-import LanguageMenu from './LanguageMenu'
+import LanguageMenu from './LanguageMenu';
   
 mapboxgl.accessToken = process.env.GATSBY_MAPBOX_ACCESS_TOKEN;
+const backend_url = process.env.BACKEND_URL;
 export default class Map extends React.Component {
 
     constructor(props) {
@@ -35,7 +36,7 @@ export default class Map extends React.Component {
     }
 
     async componentDidMount() {
-        const res = await axios.get("http://localhost:5000/listAllLocations");
+        const res = await axios.get(backend_url + "/listAllLocations");
         const organization_data = res.data;
         // console.log(organization_data);
         
@@ -140,7 +141,7 @@ export default class Map extends React.Component {
     }
 
     async updateInformation() {
-        const res = await axios.get("http://localhost:5000/listAllLocations");
+        const res = await axios.get(backend_url + "/listAllLocations");
         const organization_data = res.data;
         this.setState({
             organizationData: organization_data,
@@ -161,7 +162,7 @@ export default class Map extends React.Component {
                             <h2>Boston Mutual Aid</h2>
                         </div>
                         
-                        <Form parentCallback={this.updateInformation()}/>
+                        <Form parentCallback={this.updateInformation}/>
                     </div>
                     
                     <div className="neighborhoods">

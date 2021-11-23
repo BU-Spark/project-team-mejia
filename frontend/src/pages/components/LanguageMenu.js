@@ -2,7 +2,7 @@ import React from 'react';
 import cookie from 'js-cookie';
 import classNames from 'classnames';
 
-import i18n from '../i18n/config';
+import i18n from '../../i18n/config';
 
 
 // array containing information about the languages that we support
@@ -30,8 +30,9 @@ const GlobeIcon = ({width=24, height = 24}) => (
 export default function LanguageMenu() {
     // expand is a state of the dropdown menu. When expand is true, we show the dropdown menu,
     // when expand is false, we don't show the dropdown menu
-    const [expand, setExpand] = React.useState(false)
-    const currentLanguageCode = cookie.get('i18next') || 'en'
+    const [expand, setExpand] = React.useState(false);
+    const currentLanguageCode = cookie.get('i18next') || 'en';
+    // console.log(currentLanguageCode);
 
     return (
         <div className="container">
@@ -54,16 +55,16 @@ export default function LanguageMenu() {
                                 <li key={country_code}>
                                     <button
                                         className={classNames('dropdown-item', {
-                                            disabled: currentLanguageCode === code,
+                                            disabled: false,
                                         })}
                                         onClick={() => {
-                                            i18n.changeLanguage(code)
+                                            i18n.changeLanguage(code);
                                         }}
                                     >
                                         <span
                                             className={`flag-icon flag-icon-${country_code} mx-2`}
                                             style={{
-                                                opacity: currentLanguageCode === code ? 0.5 : 1,
+                                                opacity: 1,
                                             }}
                                         > </span>
                                         {name}

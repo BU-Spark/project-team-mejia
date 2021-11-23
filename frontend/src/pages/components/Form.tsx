@@ -13,6 +13,7 @@ import Chip from '@material-ui/core/Chip';
 import { withTranslation } from 'react-i18next';
 
 import './form.css';
+import { orgSchema } from "../../validations/FormValidation";
 
 // Defining types for props and state
 interface FormProps {
@@ -79,6 +80,8 @@ const MenuProps = {
   },
 };
 
+const backend_url = process.env.BACKEND_URL;
+
 export class Form extends React.Component<FormProps, FormState> {
     constructor(props: FormProps) {
         super(props);
@@ -115,7 +118,7 @@ export class Form extends React.Component<FormProps, FormState> {
     }
     
 
-    handleSubmit = (event: any) => {
+    handleSubmit = async (event: any) => {
         // Change phone number format
         let phone = "("
         phone+= this.state.phone.substring(0,3)
@@ -125,36 +128,43 @@ export class Form extends React.Component<FormProps, FormState> {
         phone+= this.state.phone.substring(6,10)
         // console.log(phone)
         event.preventDefault();
-        axios({
-            url: 'http://localhost:5000/location/add',
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json;charset=UTF-8'
-            },
-            data: {
-                name: this.state.name,
-                neighborhood: this.state.neighborhood.join(),
-                phone: phone,
-                email: this.state.email,
-                website: this.state.website,
-                need_help: this.state.need_help,
-                give_help: this.state.give_help,
-                address_one: this.state.address_one,
-                address_two: this.state.address_two,
-                city: this.state.city,
-                state: this.state.state,
-                zip: this.state.zip,
-            }
-        })
-        .then((res:any) => {
-            console.log('Successfully added');
-            this.handleClose();
-            this.props.parentCallback();
-        })
-        .catch((err:any) => {
-            console.log(err)
-        });
+        let formData = {
+            name: this.state.name,
+            neighborhood: this.state.neighborhood.join(),
+            email: this.state.email,
+            phone: phone,
+            website: this.state.website,
+            need_help: this.state.need_help,
+            give_help: this.state.give_help,
+            address_one: this.state.address_one,
+            address_two: this.state.address_one,
+            city: this.state.city,
+            state: this.state.state,
+            zip: this.state.zip,
+        };
+        const isValid = await orgSchema.isValid(formData);
+        if (isValid) {
+            axios({
+                url: backend_url + '/location/add',
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json;charset=UTF-8'
+                },
+                data: formData
+            })
+                .then((res:any) => {
+                    console.log('Successfully added');
+                    this.handleClose();
+                    this.props.parentCallback();
+                })
+                .catch((err:any) => {
+                    console.log(err)
+                });
+        } else {
+            alert("One or more of your inputs are incorret");
+        }
+
     }
 
     handleClose() {
@@ -168,7 +178,7 @@ export class Form extends React.Component<FormProps, FormState> {
     onChange(value) {
         // let result = validateHuman(value); 
         console.log("Captcha Value:", value);
-        axios.post('http://localhost:5000/form/validate', {token: value})
+        axios.post(backend_url + '/form/validate', {token: value})
             .then((res: any) => {
                 let isHuman = res.data.isHuman;
                 this.setState({submitDisabled: !isHuman});

@@ -18,10 +18,10 @@ i18n
         },
         resources: {
             en: {
-                translation: require('../../locales/en/translation.json')
+                translation: require('../locales/en/translation.json')
             },
             es: {
-                translation: require('../../locales/es/translation.json')
+                translation: require('../locales/es/translation.json')
             }
         }
     });

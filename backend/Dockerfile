@@ -17,7 +17,7 @@ COPY package-lock.json package-lock.json
 # RUN apt-get install libssl1.1 libssl-dev  # ==> Those package doesn't exist in 16.8.0-slim. Slim version took out the openssl-y package to compress the size to make it smaller, but out backend required it to build container successfully
 # RUN apt-get install openssl-y   
 
-# RUN npm ci --production
+RUN npm ci --production
 RUN npm install
 
 # RUN npm run build
