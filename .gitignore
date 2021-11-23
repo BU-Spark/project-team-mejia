@@ -12,3 +12,7 @@ public
 backend/node_modules/
 backend/prisma/migrations/
 
+
+# frontend/package-lock.json
+# frontend/package.json
+# frontend/yarn.lock
