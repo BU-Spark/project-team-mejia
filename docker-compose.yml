@@ -4,7 +4,8 @@ services:
   backend:
     container_name: backend-dev
     image: prismagraphql/prisma:1.34
-    build: .
+    # image: backend:prisma
+    build: ./backend
       # When the value supplied is a relative path, it is interpreted as relative to the location of the Compose file. This directory is also the build context that is sent to the Docker daemon.
       # context: ./backend
       # dockerfile: ./Dockerfiles
@@ -13,7 +14,7 @@ services:
     depends_on: 
       - postgres
     env_file:
-      - .env
+      - ./backend/.env
     # [named vol­umes](https://docs.docker.com/compose/compose-file/#volumes) that are mount­ed and can be shared amongst your Dock­er con­tain­ers (but not your host com­put­er), for stor­ing per­sis­tent data
     # volumes:
     #   - .:/code
@@ -49,19 +50,20 @@ services:
     volumes:  # volumes help us persist the data between the restart and container, so when we restart the container, the data will be kept in db/data and specified path
       - postgres:/var/lib/postgresql/data
     
-  # frontend:
-  #   image: node:16.8.0-slim
-  #   build:
-  #     context: ./frontend
-  #     dockerfile: ./Dockerfile
-  #   ports:
-  #     - '8000:8000'
-  #   env_file:
-  #     - ./frontend/.env.development
-  #   volumes:
-  #     - ./frontend:/opt/frontend
-  #   restart: always
-  #   init: true
+  frontend:
+    image: node:16.8.0-slim
+    # image: frontend:gatsby
+    build: ./frontend
+      # context: ./frontend
+      # dockerfile: ./Dockerfile
+    ports:
+      - '8000:8000'
+    env_file:
+      - ./frontend/.env.development
+    volumes:
+      - ./frontend:/opt/frontend
+    restart: always
+    init: true
   # postgres-db:
   #   image: postgres:10.3
   #   restart: always

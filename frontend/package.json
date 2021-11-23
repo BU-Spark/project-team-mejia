@@ -19,6 +19,7 @@
     "@material-ui/icons": "^4.11.2",
     "@popperjs/core": "^2.10.2",
     "@turf/centroid": "^6.3.0",
+    "acorn": "^8.6.0",
     "axios": "^0.21.1",
     "bootstrap": "^4.6.0",
     "classnames": "^2.3.1",

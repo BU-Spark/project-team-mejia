@@ -15,7 +15,7 @@ EXPOSE 8000
 # install app dependencies
 COPY package.json package.json
 COPY package-lock.json package-lock.json
-RUN npm ci --production
+# RUN npm ci --production
 
 # RUN export NODE_OPTIONS=--openssl-legacy-provider
 RUN npm install
