@@ -27,6 +27,7 @@
     "classnames": "^2.3.1",
     "dotenv": "^8.2.0",
     "flag-icon-css": "^4.0.0",
+    "formik": "^2.2.9",
     "gatsby": "^4.2.0",
     "gatsby-plugin-gatsby-cloud": "^4.2.0",
     "gatsby-plugin-sitemap": "^5.2.0",
