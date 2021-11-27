@@ -111,10 +111,13 @@ export class Form extends React.Component<FormProps, FormState> {
     }
 
 
-    handleChange = (event: any) => {
+    handleChange = (event: any, setFieldValue: Function) => {
         // React way of preventing default event handling behavior
         event.preventDefault();
         const { name, value } = event.target;
+        if (name !== "neighborhood") {
+            setFieldValue(name, value);
+        }
         console.log(value);
         this.setState(Object.assign(this.state, {[name]: value}));
     }
@@ -206,7 +209,6 @@ export class Form extends React.Component<FormProps, FormState> {
                     <Modal.Body>
                         <Formik
                             initialValues={{name: this.state.name,
-                                neighborhood: this.state.neighborhood.join(),
                                 phone: phone,
                                 email: this.state.email,
                                 website: this.state.website,
@@ -241,7 +243,7 @@ export class Form extends React.Component<FormProps, FormState> {
                                         label={t("name")}
                                         value={name}
                                         variant="outlined"
-                                        onChange={changeHandler}
+                                        onChange={(e) => changeHandler(e, setFieldValue)}
                                         error={Boolean(errors.name) && Boolean(touched.name)}
                                         helperText={(errors.name && touched.name) && errors.name}
                                     />
@@ -255,7 +257,7 @@ export class Form extends React.Component<FormProps, FormState> {
                                         label={t('email')}
                                         value={email}
                                         variant="outlined"
-                                        onChange={changeHandler}
+                                        onChange={(e) => changeHandler(e, setFieldValue)}
                                         error={Boolean(errors.email) && Boolean(touched.email)}
                                         helperText={(errors.email && touched.email) && errors.email}
                                     />
@@ -266,7 +268,7 @@ export class Form extends React.Component<FormProps, FormState> {
                                     label={t('phone')}
                                     value={phone}
                                     variant="outlined"
-                                    onChange={changeHandler}
+                                    onChange={(e) => changeHandler(e, setFieldValue)}
                                     error={Boolean(errors.phone) && Boolean(touched.phone)}
                                     helperText={(errors.phone && touched.phone) && errors.phone}
                                     />
@@ -280,7 +282,7 @@ export class Form extends React.Component<FormProps, FormState> {
                                         label={t('website')}
                                         value={website}
                                         variant="outlined"
-                                        onChange={changeHandler}
+                                        onChange={(e) => changeHandler(e, setFieldValue)}
                                         error={Boolean(errors.website) && Boolean(touched.website)}
                                         helperText={(errors.website && touched.website) && errors.website}
                                     />
@@ -294,7 +296,7 @@ export class Form extends React.Component<FormProps, FormState> {
                                         label={t('request_aid_url')}
                                         value={need_help}
                                         variant="outlined"
-                                        onChange={changeHandler}
+                                        onChange={(e) => changeHandler(e, setFieldValue)}
                                         error={Boolean(errors.need_help) && Boolean(touched.need_help)}
                                         helperText={(errors.need_help && touched.need_help) && errors.need_help}
                                     />
@@ -308,7 +310,7 @@ export class Form extends React.Component<FormProps, FormState> {
                                         label={t('offer_aid_url')}
                                         value={give_help}
                                         variant="outlined"
-                                        onChange={changeHandler}
+                                        onChange={(e) => changeHandler(e, setFieldValue)}
                                         error={Boolean(errors.give_help) && Boolean(touched.give_help)}
                                         helperText={(errors.give_help && touched.give_help) && errors.give_help}
                                     />
@@ -322,7 +324,7 @@ export class Form extends React.Component<FormProps, FormState> {
                                         label={`${t('address')} 1`}
                                         value={address_one}
                                         variant="outlined"
-                                        onChange={changeHandler}
+                                        onChange={(e) => changeHandler(e, setFieldValue)}
                                         error={Boolean(errors.address_one) && Boolean(touched.address_one)}
                                         helperText={(errors.address_one && touched.address_one) && errors.address_one}
                                     />
@@ -336,7 +338,7 @@ export class Form extends React.Component<FormProps, FormState> {
                                         label={`${t('address')} 2`}
                                         value={address_two}
                                         variant="outlined"
-                                        onChange={changeHandler}
+                                        onChange={(e) => changeHandler(e, setFieldValue)}
                                         error={Boolean(errors.address_two) && Boolean(touched.address_two)}
                                         helperText={(errors.address_two && touched.address_two) && errors.address_two}
                                     />
@@ -350,7 +352,7 @@ export class Form extends React.Component<FormProps, FormState> {
                                         label={t('city')}
                                         value={city}
                                         variant="outlined"
-                                        onChange={changeHandler}
+                                        onChange={(e) => changeHandler(e, setFieldValue)}
                                         error={Boolean(errors.city) && Boolean(touched.city)}
                                         helperText={(errors.city && touched.city) && errors.city}
                                     />
@@ -364,7 +366,7 @@ export class Form extends React.Component<FormProps, FormState> {
                                         label={t('state')}
                                         value={state}
                                         variant="outlined"
-                                        onChange={changeHandler}
+                                        onChange={(e) => changeHandler(e, setFieldValue)}
                                         error={Boolean(errors.state) && Boolean(touched.state)}
                                         helperText={(errors.state && touched.state) && errors.state}
                                     />
@@ -378,7 +380,7 @@ export class Form extends React.Component<FormProps, FormState> {
                                         label={t('zip')}
                                         value={zip}
                                         variant="outlined"
-                                        onChange={changeHandler}
+                                        onChange={(e) => changeHandler(e, setFieldValue)}
                                         error={Boolean(errors.zip) && Boolean(touched.zip)}
                                         helperText={(errors.zip && touched.zip) && errors.zip}
                                     />
@@ -393,7 +395,7 @@ export class Form extends React.Component<FormProps, FormState> {
                                             multiple
                                             name="neighborhood"
                                             value={neighborhood}
-                                            onChange={changeHandler}
+                                            onChange={(e) => changeHandler(e, setFieldValue)}
                                             input={<Input id="select-multiple-chip"/>}
                                             renderValue={(selected: any) => (
                                                 <div>
