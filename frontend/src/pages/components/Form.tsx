@@ -146,28 +146,23 @@ export class Form extends React.Component<FormProps, FormState> {
             state: this.state.state,
             zip: this.state.zip,
         };
-        // const isValid = await orgSchema.isValid(formData);
-        // if (isValid) {
-        //     axios({
-        //         url: backend_url + '/location/add',
-        //         method: 'POST',
-        //         headers: {
-        //             'Accept': 'application/json',
-        //             'Content-Type': 'application/json;charset=UTF-8'
-        //         },
-        //         data: formData
-        //     })
-        //         .then((res:any) => {
-        //             console.log('Successfully added');
-        //             this.handleClose();
-        //             this.props.parentCallback();
-        //         })
-        //         .catch((err:any) => {
-        //             console.log(err)
-        //         });
-        // } else {
-        //     alert("One or more of your inputs are incorret");
-        // }
+        axios({
+            url: backend_url + '/location/add',
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json;charset=UTF-8'
+            },
+            data: formData
+        })
+            .then((res:any) => {
+                console.log('Successfully added');
+                this.handleClose();
+                this.props.parentCallback();
+            })
+            .catch((err:any) => {
+                console.log(err)
+            });
     }
 
     handleClose() {
