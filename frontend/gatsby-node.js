@@ -1,3 +1,5 @@
+const Dotenv = require('dotenv-webpack');
+
 exports.onCreateWebpackConfig = ({
                                      actions,
                                  }) => {
@@ -26,6 +28,9 @@ exports.onCreateWebpackConfig = ({
         },
         node: {
             fs: 'empty'
-        }
+        },
+        plugins: [
+            new Dotenv({systemvars: true})
+        ]
     })
 };
