@@ -2,19 +2,22 @@ import axios from "axios";
 
 const { PrismaClient } = require("@prisma/client");
 const express = require( "express" );
+const https = require('https');
+const fs = require('fs');
 const app = express();
-const port = 5000; // default port to listen
+const port = 443; // default port to listen
 const prisma = new PrismaClient();
 const cors = require('cors')
 
+// credentials needed to create https server
+const credentials = {
+    key: fs.readFileSync('./certificate/localhost-private.pem'),
+    cert: fs.readFileSync('./certificate/localhost-cert.pem')
+};
 
 app.use(cors())
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-// start the Express server
-app.listen(port, () => {
-    console.log( `Server started at http://localhost:${ port }` );
-});
 
 app.get('/listAllLocations', async (req:any, res:any) => {
     const locations = await prisma.mutualAid.findMany()
@@ -77,3 +80,10 @@ app.post('/form/validate', async (req: any, res: any) => {
     let success = response.data.success;
     res.send({isHuman: success});
 })
+
+const httpsServer = https.createServer(credentials, app);
+
+// start the Express server
+httpsServer.listen(port, () => {
+    console.log( `Server started at http://localhost:${ port }` );
+});
