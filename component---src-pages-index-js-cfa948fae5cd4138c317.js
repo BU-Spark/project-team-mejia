@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkmutual_aid_site=self.webpackChunkmutual_aid_site||[]).push([[678],{7704:function(e,t,u){u.r(t);var l=u(7294),a=u(5135);t.default=function(){return l.createElement("div",null,l.createElement(a.default,null))}}}]);
+//# sourceMappingURL=component---src-pages-index-js-cfa948fae5cd4138c317.js.map

@@ -1,7 +1,0 @@
-.env
-.env.*
-.gitignore
-node_modules/
-.cache
-public
-.DS_Store
