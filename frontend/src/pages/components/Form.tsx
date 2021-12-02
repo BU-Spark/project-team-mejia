@@ -118,12 +118,11 @@ export class Form extends React.Component<FormProps, FormState> {
         if (name !== "neighborhood") {
             setFieldValue(name, value);
         }
-        console.log(value);
         this.setState(Object.assign(this.state, {[name]: value}));
     }
     
 
-    handleSubmit = async (event: any) => {
+    handleSubmit = async () => {
         // Change phone number format
         let phone = "("
         phone+= this.state.phone.substring(0,3)
@@ -131,7 +130,7 @@ export class Form extends React.Component<FormProps, FormState> {
         phone+= this.state.phone.substring(3,6)
         phone+= "-"
         phone+= this.state.phone.substring(6,10)
-        event.preventDefault();
+        // event.preventDefault();
         let formData = {
             name: this.state.name,
             neighborhood: this.state.neighborhood.join(),
@@ -156,7 +155,7 @@ export class Form extends React.Component<FormProps, FormState> {
             data: formData
         })
             .then((res:any) => {
-                console.log('Successfully added');
+                // console.log('Successfully added');
                 this.handleClose();
                 this.props.parentCallback();
             })
