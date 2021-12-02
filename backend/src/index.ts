@@ -43,7 +43,7 @@ app.get('/locationInfo/findByNeighborhood/:neighborhood', async(req:any, res:any
         }
     });
     res.json(locations);
-})
+});
 
 
 app.post('/location/add', async (req:any, res:any) => {
@@ -83,10 +83,10 @@ app.post('/location/add', async (req:any, res:any) => {
                     zip,
                     tags,
                 }
-            })
-            res.json(location)
+            });
+            res.json(location);
         } catch (e) {
-            res.json(e)
+            res.json(e);
         }
     }
 });
