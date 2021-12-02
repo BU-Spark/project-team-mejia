@@ -1,3 +1,5 @@
+const Dotenv = require('dotenv-webpack');
+
 exports.onCreateWebpackConfig = ({
                                      actions,
                                  }) => {
@@ -6,7 +8,7 @@ exports.onCreateWebpackConfig = ({
     } = actions;
     setWebpackConfig({
         externals: {
-            jquery: 'jQuery', // important: 'Q' capitalized
+            // jquery: 'jQuery', // important: 'Q' capitalized
         },
         resolve: {
             mainFields: ['browser', 'module', 'main'],
@@ -26,6 +28,9 @@ exports.onCreateWebpackConfig = ({
         },
         node: {
             fs: 'empty'
-        }
+        },
+        plugins: [
+            new Dotenv({systemvars: true})
+        ]
     })
 };

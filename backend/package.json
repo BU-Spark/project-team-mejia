@@ -18,7 +18,8 @@
     "csv-parse": "^4.15.3",
     "express": "^4.17.1",
     "fs": "0.0.1-security",
-    "tsc": "^1.20150623.0"
+    "tsc": "^1.20150623.0",
+    "yup": "^0.32.11"
   },
   "scripts": {
     "start": "npx ts-node .",
