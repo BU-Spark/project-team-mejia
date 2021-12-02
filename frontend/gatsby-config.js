@@ -1,7 +1,8 @@
 module.exports = {
+  pathPrefix: "/se-team-mejia",
   siteMetadata: {
     title: "Mutual-Aid-Site",
-    siteUrl: "https://cnblogs.xgqfrms.xyz",
+    siteUrl: "http://mejia.ga/",
   },
   plugins: [
     "gatsby-plugin-theme-ui",
