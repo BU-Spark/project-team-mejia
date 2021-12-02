@@ -7,10 +7,10 @@ const express = require( "express" );
 const app = express();
 const port = 5000; // default port to listen
 const prisma = new PrismaClient();
-const cors = require('cors')
+const cors = require('cors');
 
 
-app.use(cors())
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 // start the Express server
@@ -19,9 +19,9 @@ app.listen(port, () => {
 });
 
 app.get('/listAllLocations', async (req:any, res:any) => {
-    const locations = await prisma.mutualAid.findMany()
-    res.json(locations)
-})
+    const locations = await prisma.mutualAid.findMany();
+    res.json(locations);
+});
 
 app.get('/locationInfo/findByZip/:zip', async (req:any, res:any) => {
     const locations = await prisma.mutualAid.findMany({
@@ -30,9 +30,9 @@ app.get('/locationInfo/findByZip/:zip', async (req:any, res:any) => {
                 equals: req.params.zip
             }
         }
-    })
-    res.json(locations)
-})
+    });
+    res.json(locations);
+});
 
 app.get('/locationInfo/findByNeighborhood/:neighborhood', async(req:any, res:any) => {
     const locations = await prisma.mutualAid.findMany({
@@ -41,8 +41,8 @@ app.get('/locationInfo/findByNeighborhood/:neighborhood', async(req:any, res:any
                 equals: req.params.neighborhood
             }
         }
-    })
-    res.json(locations)
+    });
+    res.json(locations);
 })
 
 
@@ -65,7 +65,6 @@ app.post('/location/add', async (req:any, res:any) => {
         tags: tags,
     };
     const isValid = await formSchema.isValid(formData);
-    console.log(isValid);
     if(isValid){
         try {
             const location = await prisma.mutualAid.create({
@@ -90,7 +89,7 @@ app.post('/location/add', async (req:any, res:any) => {
             res.json(e)
         }
     }
-})
+});
 
 app.post('/form/validate', async (req: any, res: any) => {
     const secretKey = process.env.SECRET_KEY;
@@ -98,4 +97,4 @@ app.post('/form/validate', async (req: any, res: any) => {
     // the reCaptcha API will return a boolean value telling us if the form submitter has passed the reCaptcha challenge
     let success = response.data.success;
     res.send({isHuman: success});
-})
+});
