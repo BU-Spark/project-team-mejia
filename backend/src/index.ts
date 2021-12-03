@@ -13,8 +13,8 @@ const cors = require('cors');
 
 // credentials needed to create https server
 const credentials = {
-    key: fs.readFileSync('./certificate/localhost-private.pem'),
-    cert: fs.readFileSync('./certificate/localhost-cert.pem')
+    key: fs.readFileSync('./certificate/key.pem'),
+    cert: fs.readFileSync('./certificate/cert.pem')
 };
 
 app.use(cors());
