@@ -11,6 +11,7 @@ public
 # Backend file
 backend/node_modules/
 backend/prisma/migrations/
+backend/certificate/
 
 
 # frontend/package-lock.json
