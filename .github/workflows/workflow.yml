@@ -27,6 +27,10 @@ jobs:
 
       - name: Build
         run: npm run build
+        env:
+          GATSBY_MAPBOX_ACCESS_TOKEN: ${{secrets.GATSBY_MAPBOX_ACCESS_TOKEN}}
+          SITE_KEY: ${{secrets.SITE_KEY}}
+          BACKEND_URL: ${{secrets.BACKEND_URL}}
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@4.1.7
