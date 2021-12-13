@@ -8,7 +8,7 @@ exports.onCreateWebpackConfig = ({
     } = actions;
     setWebpackConfig({
         externals: {
-            jquery: 'jQuery', // important: 'Q' capitalized
+            // jquery: 'jQuery', // important: 'Q' capitalized
         },
         resolve: {
             mainFields: ['browser', 'module', 'main'],
