@@ -23,11 +23,9 @@ exports.onCreateWebpackConfig = ({
                 stream: require.resolve('stream-browserify'),
                 assert: require.resolve('assert'),
                 path: require.resolve('path-browserify'),
-                os: require.resolve('os-browserify/browser')
+                os: require.resolve('os-browserify/browser'),
+                fs: false
             }
-        },
-        node: {
-            fs: 'empty'
         },
         plugins: [
             new Dotenv({systemvars: true})
