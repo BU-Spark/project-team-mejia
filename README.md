@@ -12,7 +12,7 @@
 * Julian Maldonado
 
 ## Index
-- [Technologies Used](#technologies-used)
+- [Technologies Used](#tech-stack)
 - [Requirements](#requirements)
 - [Quick Start](#quick-start)
 - [Adding More Languages to the Website](#adding-more-languages-to-the-website)
@@ -22,9 +22,11 @@
 
 
 
-## Technologies Used  
+## Tech Stack  
 For the backend, we used Prisma as database client, Express as our backend framework.  
-For the frontend, we used React as our frontend framework and Gatsby static site generator to build/generate our website. 
+For the frontend, we used React as our frontend framework and Gatsby static site generator to build/generate our website.  
+Here is an overview of our technical architecture:  
+![tech architecture](./img/tech-architecture.png)
 
 ## Requirements
 Before you run the frontend and backend of the website, you have to register a Mapbox account. You also need to register
@@ -146,7 +148,7 @@ The frontend of the website is currently deployed on `gh-pages` branch of this r
 
 ==> In line 35, we are asking it to create a table named mutualAid , but it has problem in finding its definition in the database.
 
-Here is what you want to do to troubleshoot the problem:
+Here is what you want to do to resolve the problem:
 
 ==> First, check your database management, see if a table called “MutualAid” has created or not?
 
