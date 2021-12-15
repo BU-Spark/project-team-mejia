@@ -1,5 +1,4 @@
 import React from 'react';
-import cookie from 'js-cookie';
 import classNames from 'classnames';
 
 import i18n from '../../i18n/config';

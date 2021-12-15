@@ -158,7 +158,7 @@ export default class Map extends React.Component {
                     </div>
                     <div className='heading'>
                         <div style={{display: "flex", flexDirection: "row", justifyContent: "space-evenly", alignItems: "center" }}>
-                            <img className="logo" src={logo} style={{paddingRight: "20px"}}></img>
+                            <img className="logo" src={logo} style={{paddingRight: "20px"}} alt=""></img>
                             <h2>Boston Mutual Aid</h2>
                         </div>
                         
