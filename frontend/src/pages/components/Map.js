@@ -40,12 +40,12 @@ export default class Map extends React.Component {
         const organization_data = res.data;
         console.log(organization_data);
         
-        // const bostonZipCodes = ["02128", "02126", "02136", "02122", "02124", "02121", "02125", "02131", "02119", "02120", "02132", "02111", "02118", "02130", "02127", "02210", "02163", "02134", "02135", "02129", "02108", "02114", "02116", "02199", "02222", "02109", "02110", "02113", "02115", "02215"]
+
                 
         const { lng, lat, zoom } = this.state;
         
         // Create mapbox map
-        var map = new mapboxgl.Map({
+        let map = new mapboxgl.Map({
             container: 'map',
             style: 'mapbox://styles/jkym2/ckni1o0zu06zh17qigui0dmuv',
             center: [lng, lat],
@@ -81,7 +81,7 @@ export default class Map extends React.Component {
                 }
             });
 
-            var popup = new mapboxgl.Popup({
+            let popup = new mapboxgl.Popup({
                 closeButton: false,
                 closeOnClick: false
             });
@@ -182,13 +182,11 @@ export default class Map extends React.Component {
 
 function Neighborhoods (props) {
     const neighborhoodData = props.neighborhoodData;
-    // console.log(neighborhoodData);
     
     const neighborhoodNames =  neighborhoodData.features.map((neighborhood) => {
         return neighborhood.properties.Name;
     });
-    
-    // console.log(d);
+
     neighborhoodNames.sort();
     // add Boston-wide to the front of the array
     neighborhoodNames.unshift('Boston-wide');

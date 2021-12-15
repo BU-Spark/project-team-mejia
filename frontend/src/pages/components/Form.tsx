@@ -3,7 +3,7 @@ import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import ReCAPTCHA from 'react-google-recaptcha';
-import { requirePropFactory, TextField } from '@material-ui/core';
+import { TextField } from '@material-ui/core';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -155,7 +155,6 @@ export class Form extends React.Component<FormProps, FormState> {
             data: formData
         })
             .then((res:any) => {
-                // console.log('Successfully added');
                 this.handleClose();
                 this.props.parentCallback();
             })
@@ -183,7 +182,7 @@ export class Form extends React.Component<FormProps, FormState> {
             .catch((err: any) => {
                 alert('something went wrong, please try again');
             })
-        //this.reCaptchaRef.current.reset();
+
     }
 
     render() {

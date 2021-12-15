@@ -106,5 +106,5 @@ const httpsServer = https.createServer(credentials, app);
 
 // start the Express server
 httpsServer.listen(port, () => {
-    console.log( `Server started at http://localhost:${ port }` );
+    console.log( `Server started at https://localhost:${ port }` );
 });

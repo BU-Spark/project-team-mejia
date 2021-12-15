@@ -9,7 +9,7 @@ services:
       # context: ./backend
       # dockerfile: ./Dockerfiles
     ports:
-      - '5000:5000'
+      - '443:443'
     depends_on: 
       - postgres
     env_file:
@@ -19,7 +19,7 @@ services:
     #   - .:/code
     environment:
       PRISMA_CONFIG: |
-        port: 5000
+        port: 443
         managementApiSecret: 6LeX8LMcAAAAANzYvwbZl34R0wh4LfB027rpMFJh
         databases:
           default:
@@ -48,29 +48,7 @@ services:
       - POSTGRES_PASSWORD=postgresql
     volumes:  # volumes help us persist the data between the restart and container, so when we restart the container, the data will be kept in db/data and specified path
       - postgres:/var/lib/postgresql/data
-    
-  # frontend:
-  #   image: node:16.8.0-slim
-  #   build:
-  #     context: ./frontend
-  #     dockerfile: ./Dockerfile
-  #   ports:
-  #     - '8000:8000'
-  #   env_file:
-  #     - ./frontend/.env.development
-  #   volumes:
-  #     - ./frontend:/opt/frontend
-  #   restart: always
-  #   init: true
-  # postgres-db:
-  #   image: postgres:10.3
-  #   restart: always
-  #   environment:
-  #     POSTGRES_USER: "postgres"
-  #     POSTGRES_PASSWORD: "postgres"
-  #   volumes:
-  #     - postgres:/var/lib/postgresql/data
-  #   init: true
+
 volumes:
   postgres: ~
 

@@ -31,7 +31,6 @@ export default function LanguageMenu() {
     // expand is a state of the dropdown menu. When expand is true, we show the dropdown menu,
     // when expand is false, we don't show the dropdown menu
     const [expand, setExpand] = React.useState(false);
-    const currentLanguageCode = cookie.get('i18next') || 'en';
     // console.log(currentLanguageCode);
 
     return (
