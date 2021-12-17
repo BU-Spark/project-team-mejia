@@ -12,13 +12,18 @@
 * Julian Maldonado
 
 ## Index
-- [Technologies Used](#tech-stack)
+- [Project Overview](#project-overview)
+- [Tech Stack](#tech-stack)
 - [Requirements](#requirements)
 - [Quick Start](#quick-start)
 - [Adding More Languages to the Website](#adding-more-languages-to-the-website)
 - [How To Deploy](#how-to-deploy)
 - [Debug/Troubleshooting](#debugtroubleshooting)
 - [Reference](#reference)
+
+## Project Overview
+There is currently no centralized site where a Boston resident can find mutual aid organizations in their specific area. this project aims to solve this problem by providing people living in the Greater Boston area a website where they can easily find information about mutual aid groups in their area
+and get the help they need
 
 
 
