@@ -131,6 +131,44 @@ To add a new language, see the following steps:
 The frontend of the website is currently deployed on `gh-pages` branch of this repo. We've implemented CI/CD for the frontend, so every push or pull request to the `deployment` branch will trigger the CI/CD workflow in this repo, which will build the website and automatically deploy to github pages.
 
 
+### Backend
+The Dockerfile used for building backend Prisma applications is defined within the backend folder. For databases, the docker image for databases is directly extended based on the original version postgres:13, which is described in the docker-compose.yml file along with other relevant configuration for environment set-up and connections between backend and database. 
+
+For the deployment, compress the entire backend folder into a .zip file, and upload it to the EC2 instance, and then you build and run the docker image within the EC2 instance, by using the following commands:
+
+Building and Running Docker image with docker-compose: (Recommended)
+```bash
+# Navigate into backend folder
+$ cd backend
+
+# Building the docker images for both prisma application and database
+docker-compose build
+
+# Running docker images
+docker-compose up
+
+# Checking the running images  
+docker ps
+
+# Stop the container
+docker-compose down
+```
+
+(Opt)Commands for Building and Running docker images:
+```bash
+# Build docker images in current directory
+docker build -t getting-started .
+
+# Run docker image in background
+docker run -d -p 80:80 getting-started
+# -d for detach, run container in background
+# -p pushlish-list, publish a container's port(s) to the host
+
+docker stop [container_id …]	# stop running
+docker rm  [container_id … ]	# Remove one or more containers
+docker rmi [image_id]		# Remove one or more container images
+```
+
 
 ## Debug/Troubleshooting
 
