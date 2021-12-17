@@ -107,7 +107,7 @@ Note: If you have problem running npx prisma introspect , it’s probably becaus
 $ npx prisma migrate dev --name init
 ```
 
-4. create a folder called certificate and generate an SSL certificate inside this folder. This is needed so that the server can be served using HTTPS. In development environment, you can use openssl to generate a self-signed certificate, but for production please use a valid certificate authority like [Let's Encrypt](https://letsencrypt.org/) 
+4. create a folder called certificate inside the backend folder and generate an SSL certificate inside this folder. This is needed so that the server can be served using HTTPS. In development environment, you can use openssl to generate a self-signed certificate, but for production please use a valid certificate authority like [Let's Encrypt](https://letsencrypt.org/) 
 to generate an authorized SSL certificate.
 
 5. Start the server
