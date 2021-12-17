@@ -107,14 +107,17 @@ Note: If you have problem running npx prisma introspect , it’s probably becaus
 $ npx prisma migrate dev --name init
 ```
 
-4. Start the server
+4. create a folder called certificate and generate an SSL certificate inside this folder. This is needed so that the server can be served using HTTPS. In development environment, you can use openssl to generate a self-signed certificate, but for production please use a valid certificate authority like [Let's Encrypt](https://letsencrypt.org/) 
+to generate an authorized SSL certificate.
+
+5. Start the server
 ```bash
 $ npm install
 $ npm start
 ```
 The server should be running on [https://0.0.0.0:443](https://0.0.0.0:443)
 
-**Important Note**: The backend is using port 443 because we have enforced HTTPS access in backend. If the frontend is running on HTTP, the requests to backend will be blocked because they will be considered insecure. During development, it is recommended to run the backend through HTTP. To do this,
+**Important Note**: The backend is using port 443 because we have enforced HTTPS access in backend. If the frontend is running on HTTP, the requests to backend will be blocked because they will be considered insecure. During development, you can run the backend through HTTP. To do this,
 change the port number to 5000 and comment out the code regarding the credentials and httpsServer in the file `index.ts`. Use `app.listen` instead of `httpsServer.listen`.
 
 
