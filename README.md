@@ -127,6 +127,7 @@ To add a new language, see the following steps:
 ![language-config](./img/language-config.png)
    
 ## How To Deploy
+**Note**: Please push or merge the version you want to deploy to the `deployment` branch, `dev` branch is used for development only.
 ### Frontend
 The frontend of the website is currently deployed on `gh-pages` branch of this repo. We've implemented CI/CD for the frontend, so every push or pull request to the `deployment` branch will trigger the CI/CD workflow in this repo, which will build the website and automatically deploy to github pages.
 
