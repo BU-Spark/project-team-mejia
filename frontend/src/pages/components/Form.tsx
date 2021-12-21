@@ -131,9 +131,9 @@ export class Form extends React.Component<FormProps, FormState> {
         phone+= "-"
         phone+= this.state.phone.substring(6,10)
 
-        let org_website = this.state.website.substring(0,4) == 'http' ? this.state.website : 'https://' + this.state.website;
-        let org_need_help = this.state.need_help.substring(0,4) == 'http' ? this.state.need_help : 'https://' + this.state.need_help;
-        let org_give_help = this.state.give_help.substring(0,4) == 'http' ? this.state.give_help : 'https://' + this.state.give_help;
+        let org_website = this.state.website.substring(0,4) === 'http' ? this.state.website : 'https://' + this.state.website;
+        let org_need_help = this.state.need_help.substring(0,4) === 'http' ? this.state.need_help : 'https://' + this.state.need_help;
+        let org_give_help = this.state.give_help.substring(0,4) === 'http' ? this.state.give_help : 'https://' + this.state.give_help;
         // event.preventDefault();
         let formData = {
             name: this.state.name,
