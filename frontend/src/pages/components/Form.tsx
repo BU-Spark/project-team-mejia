@@ -130,15 +130,19 @@ export class Form extends React.Component<FormProps, FormState> {
         phone+= this.state.phone.substring(3,6)
         phone+= "-"
         phone+= this.state.phone.substring(6,10)
+
+        let org_website = this.state.website.substring(0,4) == 'http' ? this.state.website : 'https://' + this.state.website;
+        let org_need_help = this.state.need_help.substring(0,4) == 'http' ? this.state.need_help : 'https://' + this.state.need_help;
+        let org_give_help = this.state.give_help.substring(0,4) == 'http' ? this.state.give_help : 'https://' + this.state.give_help;
         // event.preventDefault();
         let formData = {
             name: this.state.name,
             neighborhood: this.state.neighborhood.join(),
             email: this.state.email,
             phone: phone,
-            website: this.state.website,
-            need_help: this.state.need_help,
-            give_help: this.state.give_help,
+            website: org_website,
+            need_help: org_need_help,
+            give_help: org_give_help,
             address_one: this.state.address_one,
             address_two: this.state.address_two,
             city: this.state.city,
