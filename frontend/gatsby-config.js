@@ -2,7 +2,7 @@ module.exports = {
   pathPrefix: "/se-team-mejia",
   siteMetadata: {
     title: "Mutual-Aid-Site",
-    siteUrl: "http://mejia.ga/",
+    siteUrl: "https://bu-spark.github.io/se-team-mejia/",
   },
   plugins: [
     "gatsby-plugin-theme-ui",
