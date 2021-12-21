@@ -243,7 +243,6 @@ function Neighborhood(props) {
     const { t } = useTranslation('translation');
     // create component state(open) and state update method(setOpen)
     const [open, setOpen] = React.useState(true);
-    console.log(props)
     // wrap the setOpen function with handleClick function
     const handleClick = () => {
       setOpen(!open);
@@ -287,9 +286,9 @@ function Neighborhood(props) {
   
           <CardContent className="organization-links">
             {org.tags[0] === "food" ? <p>Food</p> : false}
-            {org.website !== "" ? (<a href={org.website}>{t('website')}</a>)  : false}
-            {org.give_help !== "" ? (<a href={org.give_help}>{t('give_help')}</a>)  : false}
-            {org.need_help !== "" ? (<a href={org.need_help}>{t('get_help')}</a>)  : false}
+            {org.website !== "" ? (<a href={org.website.substring(0,4) === 'http' ? org.website : "https://"+org.website}>{t('website')}</a>)  : false}
+            {org.give_help !== "" ? (<a href={org.give_help.substring(0,4) === 'http' ? org.give_help : "https://" + org.give_help}>{t('give_help')}</a>)  : false}
+            {org.need_help !== "" ? (<a href={org.need_help.substring(0,4) === 'http' ? org.need_help : "https://" + org.need_help}>{t('get_help')}</a>)  : false}
           </CardContent>
         </Card>
       )
