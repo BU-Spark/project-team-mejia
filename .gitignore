@@ -2,6 +2,18 @@
 .env.*
 .gitignore
 node_modules/
+frontend/node_modules/
 .cache
 public
 .DS_Store
+*.idea
+
+# Backend file
+backend/node_modules/
+backend/prisma/migrations/
+backend/certificate/
+
+
+# frontend/package-lock.json
+# frontend/package.json
+# frontend/yarn.lock

@@ -1,12 +1,12 @@
 import { PrismaClient } from '@prisma/client';
 
-var fs = require('fs');
-var csv = require('csv-parse');
+const fs = require('fs');
+const csv = require('csv-parse');
 const prisma = new PrismaClient();
 
 async function importFromCSV() {
-    var mutualaids: string[] = []
-    fs.createReadStream('mutualaid.csv')
+    let mutualaids: string[] = []
+    fs.createReadStream('./src/mutualaid.csv')
         .pipe(csv())
         .on('data', function (data: string) {
             return mutualaids.push(data)
@@ -14,7 +14,7 @@ async function importFromCSV() {
         .on('end', function () {
             addToDB(mutualaids.slice(1, mutualaids.length))
     });
-};
+}
 
 async function addToDB(values: string[]) {
     for (var i=0; i<values.length; i++){
@@ -36,17 +36,6 @@ async function addToDB(values: string[]) {
     }
 }
 
-async function validateHuman(token: String): Promise<boolean> {
-    const secret =  process.env.SECRET_KEY;
-    const response = await fetch(
-        `https://www.google.com/recaptcha/api/siteverify?secret=${secret}&response=${token}`,
-        {
-            method: "POST",
-        }
-    );
-    const data = await response.json();
-    return data.success;
-}
 
 importFromCSV()
     .catch(e => {

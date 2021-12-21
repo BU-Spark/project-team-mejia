@@ -1,12 +1,17 @@
 import React from 'react';
+
+
 import Map from './components/Map';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import '../i18n/config'
+
+
+
 
 function App() {
 	return(
-		<div>
-			<Map />
-		</div>
+			<div>
+				<Map />
+			</div>
 	);
 }
 
