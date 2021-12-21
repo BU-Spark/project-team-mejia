@@ -198,7 +198,7 @@ function Neighborhoods (props) {
         if (name === "Boston-wide") {
             // Push all city, which include "Boston-wide" as their neighborhood, into neighborhoods array
             const orgs = props.orgData.filter(i => {
-                return i.neighborhood.includes(name);
+                return i.neighborhood[0].includes(name);
             });
             const bostonWide = {
                 Name: name,
