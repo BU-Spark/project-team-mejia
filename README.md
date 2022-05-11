@@ -1,6 +1,5 @@
 # Boston Mutual Aid Site
 
-
 ## Team Mejia Development Team
 
 * Aira Cosino
